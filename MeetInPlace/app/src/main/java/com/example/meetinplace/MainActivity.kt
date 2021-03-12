@@ -2,6 +2,7 @@ package com.example.meetinplace
 
 import android.os.Bundle
 import android.util.Log
+import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import com.naver.maps.map.MapFragment
 import com.naver.maps.map.NaverMap
@@ -18,13 +19,18 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             ?: MapFragment.newInstance().also {
                 fm.beginTransaction().add(R.id.map, it).commit()
             }
+
+		mapFragment.getMapAsync(this)
     }
 
-	override fun onMapReady(naverMap: NaverMap) {
-		Log.i(TAG, "ready naver map")
-	}
+	@UiThread
+    override fun onMapReady(naverMap: NaverMap) {
+		naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_BUILDING, true)
+        naverMap.isIndoorEnabled = true
+		naverMap.isNightModeEnabled = true
+    }
 
-	companion object {
-		val TAG = MainActivity::class.qualifiedName
-	}
+    companion object {
+        val TAG = MainActivity::class.qualifiedName
+    }
 }
