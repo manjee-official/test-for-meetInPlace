@@ -1,6 +1,8 @@
 plugins {
 	id 'com.android.application'
 	id 'kotlin-android'
+	id 'kotlin-android-extensions'
+	id 'kotlin-kapt'
 }
 
 android {
@@ -23,12 +25,18 @@ android {
 			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 		}
 	}
+
 	compileOptions {
 		sourceCompatibility JavaVersion.VERSION_1_8
 		targetCompatibility JavaVersion.VERSION_1_8
 	}
+
 	kotlinOptions {
 		jvmTarget = '1.8'
+	}
+
+	buildFeatures {
+		dataBinding true
 	}
 }
 
@@ -45,10 +53,10 @@ dependencies {
 
 	// Retrofit2
 	implementation 'com.squareup.retrofit2:retrofit:2.8.1'
-	implementation 'com.squareup.retrofit2:converter-1.6.0'
 	implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
 
-	// Logging Interceptor
+	// OkHttp3
+	implementation 'com.squareup.okhttp3:okhttp:3.14.7'
 	implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
 
 	testImplementation 'junit:junit:4.+'

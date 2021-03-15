@@ -7,6 +7,6 @@ import retrofit2.http.Query
 
 interface MapRemoteDataSource {
 
-    @GET("geocode.json")
+    @GET("geocode")
     fun searchAddress(@Query("query") query: String): Call<GeoCodeData>
 }

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 object MapRemoteService {
 
     private const val naverMapApiUrl =
-        "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode"
+        "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/"
     private const val readWriteTimeoutSec = 20L
 
     val mapApiService: MapRemoteDataSource
@@ -26,8 +26,8 @@ object MapRemoteService {
         .addInterceptor { chain ->
             val request = chain.request().newBuilder()
                 .addHeader("Content-Type", "application/json;charset=UTF-8")
-                .addHeader("X-Naver-Client-Id", "mbin844jaa")
-                .addHeader("X-Naver-Client-Secret", "nYzVgBFBy14pe15HQpo7a8ZAmwMIK4F49amHe0ki").build()
+                .addHeader("X-NCP-APIGW-API-KEY-ID", "mbin844jaa")
+                .addHeader("X-NCP-APIGW-API-KEY", "nYzVgBFBy14pe15HQpo7a8ZAmwMIK4F49amHe0ki").build()
             chain.proceed(request)
         }
 
