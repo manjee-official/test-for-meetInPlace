@@ -14,7 +14,6 @@ class MapRepositoryImpl : MapRepository {
         success: (GeoCodeData) -> Unit,
         fail: (Throwable) -> Unit
     ) {
-        Log.i("@@@@", "!!: $address")
         MapRemoteService.mapApiService.searchAddress(address).enqueue(object :
             Callback<GeoCodeData> {
             override fun onFailure(call: Call<GeoCodeData>, t: Throwable) {
@@ -22,8 +21,10 @@ class MapRepositoryImpl : MapRepository {
             }
 
             override fun onResponse(call: Call<GeoCodeData>, response: Response<GeoCodeData>) {
-                response.body()?.copy()?.let {
-                    success(it)
+                if (response.isSuccessful) {
+                    response.body()?.copy()?.let {
+                        success(it)
+                    }
                 }
             }
         })

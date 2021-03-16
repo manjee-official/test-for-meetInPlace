@@ -4,7 +4,7 @@ data class GeoCodeData(
     val status: String,
     val errorMessage: String,
     val meta: GeoMeta,
-    val address: GeoAddress
+    val address: GeoAddress?
 )
 
 data class GeoMeta(
