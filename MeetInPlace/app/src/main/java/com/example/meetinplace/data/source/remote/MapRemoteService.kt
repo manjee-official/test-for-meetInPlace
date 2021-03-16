@@ -1,5 +1,6 @@
 package com.example.meetinplace.data.source.remote
 
+import com.example.meetinplace.MyApplication
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -26,8 +27,8 @@ object MapRemoteService {
         .addInterceptor { chain ->
             val request = chain.request().newBuilder()
                 .addHeader("Content-Type", "application/json;charset=UTF-8")
-                .addHeader("X-NCP-APIGW-API-KEY-ID", "mbin844jaa")
-                .addHeader("X-NCP-APIGW-API-KEY", "nYzVgBFBy14pe15HQpo7a8ZAmwMIK4F49amHe0ki").build()
+                .addHeader("X-NCP-APIGW-API-KEY-ID", MyApplication.API_ID)
+                .addHeader("X-NCP-APIGW-API-KEY", MyApplication.API_KEY).build()
             chain.proceed(request)
         }
 
