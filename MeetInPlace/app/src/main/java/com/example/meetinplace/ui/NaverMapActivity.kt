@@ -1,29 +1,27 @@
-package com.example.meetinplace
+package com.example.meetinplace.ui
 
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.meetinplace.R
 import com.example.meetinplace.data.repository.MapRepositoryImpl
-import com.example.meetinplace.data.source.remote.MapRemoteService
-import com.example.meetinplace.databinding.ActivityMainBinding
+import com.example.meetinplace.databinding.ActivityNaverMapBinding
 import com.naver.maps.map.MapFragment
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.NaverMapOptions
 import com.naver.maps.map.OnMapReadyCallback
 
+class NaverMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback {
-
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityNaverMapBinding
     private var mapRepositoryImpl: MapRepositoryImpl = MapRepositoryImpl()
-    private lateinit var mapRemoteService: MapRemoteService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this@MainActivity, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this@NaverMapActivity, R.layout.activity_main)
 
         val fm = supportFragmentManager
         val options = NaverMapOptions().mapType(NaverMap.MapType.Navi).nightModeEnabled(true)
@@ -39,13 +37,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             mapRepositoryImpl.searchAddressOnRemote(
                 binding.etSearchAddress.text.toString(),
                 success = {
-                    Log.i(
-                        "@@@@",
-                        it.toString()
-                    )
+                    Log.i(TAG, "API 호출 성공: $it.toString()")
                 },
                 fail = {
-                    Log.e("@@@@", it.toString())
+                    Log.e(TAG, "API 호출 실패: $it.toString()")
                 })
         }
     }
@@ -56,6 +51,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     companion object {
-        val TAG = MainActivity::class.qualifiedName
+        val TAG = NaverMapActivity::class.qualifiedName
     }
 }

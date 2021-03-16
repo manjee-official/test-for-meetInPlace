@@ -1,6 +1,5 @@
 package com.example.meetinplace.data.repository
 
-import android.util.Log
 import com.example.meetinplace.data.model.GeoCodeData
 import com.example.meetinplace.data.source.remote.MapRemoteService
 import retrofit2.Call

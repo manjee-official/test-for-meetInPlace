@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Meet in place</string>
+    <string name="naver_map">naver map</string>
+    <string name="google_map">google map</string>
 </resources>

@@ -10,35 +10,25 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".ui.MainActivity">
 
-        <EditText
-            android:id="@+id/et_searchAddress"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toTopOf="@id/map"
-            app:layout_constraintEnd_toStartOf="@id/btn_search"
+        <Button
+            android:id="@+id/btn_naverMap"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:text="@string/naver_map"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/btn_search"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            app:layout_constraintBottom_toBottomOf="@id/et_searchAddress"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/et_searchAddress"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <FrameLayout
-            android:id="@+id/map"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/btn_googleMap"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:text="@string/google_map"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_searchAddress"
-            tools:background="@color/black" />
+            app:layout_constraintTop_toBottomOf="@id/btn_naverMap" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
