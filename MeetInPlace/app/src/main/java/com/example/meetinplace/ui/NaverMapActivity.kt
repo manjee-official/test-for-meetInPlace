@@ -8,10 +8,8 @@ import androidx.databinding.DataBindingUtil
 import com.example.meetinplace.R
 import com.example.meetinplace.data.repository.MapRepositoryImpl
 import com.example.meetinplace.databinding.ActivityNaverMapBinding
-import com.naver.maps.map.MapFragment
-import com.naver.maps.map.NaverMap
-import com.naver.maps.map.NaverMapOptions
-import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.*
 
 class NaverMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -47,7 +45,8 @@ class NaverMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     @UiThread
     override fun onMapReady(naverMap: NaverMap) {
-
+        val cameraPosition = CameraPosition(LatLng(37.487936, 126.825071), 17.0)
+        naverMap.cameraPosition = cameraPosition
     }
 
     companion object {
