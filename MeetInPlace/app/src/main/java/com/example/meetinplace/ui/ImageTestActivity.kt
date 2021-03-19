@@ -15,22 +15,32 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
-class ImageTestView : AppCompatActivity() {
+class ImageTestActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityImageTestBinding
 
+    val image1 = R.drawable.boyoung1
+    val image2 = R.drawable.boyoung2
+    val image3 = R.drawable.dahee1
+
+    var imageList1 = listOf(image1, image2, image3)
+    var imageList2 = listOf(image1)
+    var imageList3 = listOf(image1, image3)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this@ImageTestView, R.layout.activity_image_test)
+        binding = DataBindingUtil.setContentView(this@ImageTestActivity, R.layout.activity_image_test)
 
-        val v = createProgressView()
-        binding.layoutProgress.addView(v)
-        startProgress(v as ProgressBar)
+        for (drawable in imageList1) {
+            val v = createProgressView()
+            binding.layoutProgress.addView(v)
+        }
+//        startProgress(v as ProgressBar)
     }
 
     private fun createProgressView(): View {
         val progressBar =
-            ProgressBar(this@ImageTestView, null, android.R.attr.progressBarStyleHorizontal)
+            ProgressBar(this@ImageTestActivity, null, android.R.attr.progressBarStyleHorizontal)
         val layoutParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -46,7 +56,7 @@ class ImageTestView : AppCompatActivity() {
         return TypedValue.applyDimension(
             TypedValue.COMPLEX_UNIT_DIP,
             this,
-            this@ImageTestView.resources.displayMetrics
+            this@ImageTestActivity.resources.displayMetrics
         ).toInt()
     }
 
@@ -61,13 +71,7 @@ class ImageTestView : AppCompatActivity() {
 
     companion object {
         init {
-            val image1 = R.drawable.boyoung1
-            val image2 = R.drawable.boyoung2
-            val image3 = R.drawable.dahee1
 
-            var imageList1 = listOf(image1, image2, image3)
-            var imageList2 = listOf(image1)
-            var imageList3 = listOf(image1, image3)
         }
     }
 }

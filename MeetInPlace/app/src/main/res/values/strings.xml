@@ -2,4 +2,5 @@
     <string name="app_name">Meet in place</string>
     <string name="naver_map">naver map</string>
     <string name="google_map">google map</string>
+    <string name="image_test">이미지 테스트 뷰</string>
 </resources>

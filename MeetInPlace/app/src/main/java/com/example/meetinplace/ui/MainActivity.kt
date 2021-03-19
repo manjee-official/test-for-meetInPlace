@@ -23,6 +23,10 @@ class MainActivity : AppCompatActivity() {
         binding.btnGoogleMap.setOnClickListener {
             startActivity(Intent(this, GoogleMapActivity::class.java))
         }
+
+        binding.btnImageTest.setOnClickListener {
+            startActivity(Intent(this, ImageTestActivity::class.java))
+        }
     }
 
     companion object {
