@@ -19,13 +19,15 @@ class ImageTestActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityImageTestBinding
 
-    val image1 = R.drawable.boyoung1
-    val image2 = R.drawable.boyoung2
-    val image3 = R.drawable.dahee1
+    private val image1 = R.drawable.boyoung1
+    private val image2 = R.drawable.boyoung2
+    private val image3 = R.drawable.dahee1
 
     var imageList1 = listOf(image1, image2, image3)
     var imageList2 = listOf(image1)
     var imageList3 = listOf(image1, image3)
+
+    private var progressBarList : ArrayList<View> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +36,10 @@ class ImageTestActivity : AppCompatActivity() {
         for (drawable in imageList1) {
             val v = createProgressView()
             binding.layoutProgress.addView(v)
+            progressBarList.add(v)
         }
-//        startProgress(v as ProgressBar)
+        startProgress(progressBarList[0] as ProgressBar)
+
     }
 
     private fun createProgressView(): View {
@@ -70,8 +74,6 @@ class ImageTestActivity : AppCompatActivity() {
     }
 
     companion object {
-        init {
 
-        }
     }
 }
