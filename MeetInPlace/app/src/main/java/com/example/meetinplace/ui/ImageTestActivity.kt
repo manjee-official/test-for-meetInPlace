@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.example.meetinplace.R
 import com.example.meetinplace.databinding.ActivityImageTestBinding
 import kotlinx.coroutines.GlobalScope
@@ -40,6 +42,13 @@ class ImageTestActivity : AppCompatActivity() {
         }
         startProgress(progressBarList[0] as ProgressBar)
 
+        binding.viewImage.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
+        binding.viewImage.setFactory {
+            val imageView = ImageView(this)
+            imageView.scaleType = ImageView.ScaleType.FIT_CENTER
+            imageView
+        }
+        Glide.with(this).load(imageList1[0]).into(binding.viewImage.currentView as ImageView)
     }
 
     private fun createProgressView(): View {
