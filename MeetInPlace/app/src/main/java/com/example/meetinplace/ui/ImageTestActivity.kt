@@ -15,7 +15,6 @@ import com.example.meetinplace.R
 import com.example.meetinplace.databinding.ActivityImageTestBinding
 import kotlinx.coroutines.*
 
-
 class ImageTestActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityImageTestBinding
@@ -33,6 +32,8 @@ class ImageTestActivity : AppCompatActivity() {
 
 	private var currentGroupIndex = 0
 	private var currentImageIndex = 0
+
+	private lateinit var currentCorutionJob: Deferred<Unit>
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -113,13 +114,13 @@ class ImageTestActivity : AppCompatActivity() {
 	}
 
 	private suspend fun startProgress(progressBar: ProgressBar) {
-		val value = GlobalScope.async {
+		currentCorutionJob = GlobalScope.async {
 			repeat(300) {
 				delay(10L)
 				progressBar.progress = progressBar.progress + 1
 			}
 		}
-		value.await()
+		currentCorutionJob.await()
 		checkNextStep()
 	}
 
