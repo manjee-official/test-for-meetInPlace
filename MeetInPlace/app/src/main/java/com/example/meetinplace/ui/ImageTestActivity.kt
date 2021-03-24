@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.meetinplace.R
 import com.example.meetinplace.databinding.ActivityImageTestBinding
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 
 class ImageTestActivity : AppCompatActivity() {
@@ -40,7 +39,7 @@ class ImageTestActivity : AppCompatActivity() {
 		binding = DataBindingUtil.setContentView(this@ImageTestActivity, R.layout.activity_image_test)
 
 		setImageSwitcher()
-		setProgressBar(currentGroupIndex = currentGroupIndex)
+		setProgressView()
 		showImage(currentImageIndex = currentImageIndex)
 	}
 
@@ -53,7 +52,7 @@ class ImageTestActivity : AppCompatActivity() {
 		}
 	}
 
-	private fun setProgressBar(currentGroupIndex: Int) {
+	private fun setProgressView() {
 		for (drawable in imageList[currentGroupIndex]) {
 			val v = createProgressView()
 			binding.layoutProgress.addView(v)
@@ -62,13 +61,38 @@ class ImageTestActivity : AppCompatActivity() {
 	}
 
 	private fun showImage(currentImageIndex: Int) {
-		startProgress(progressBarList[currentImageIndex] as ProgressBar)
+		GlobalScope.launch(Dispatchers.Main) {
+			startProgress(progressBarList[currentImageIndex] as ProgressBar)
+		}
 		Glide.with(this).load(imageList[currentGroupIndex][currentImageIndex]).into(binding.viewImage.currentView as ImageView)
+	}
+
+	private fun checkNextStep() {
+		++currentImageIndex
+		if (currentImageIndex < imageList[currentGroupIndex].size) {
+			showImage(currentImageIndex = currentImageIndex)
+		} else {
+			resetProgressView()
+		}
+	}
+
+	private fun resetProgressView() {
+		++currentGroupIndex
+		if (currentGroupIndex < imageList.size) {
+			binding.layoutProgress.removeAllViews()
+			progressBarList = ArrayList()
+
+			setProgressView()
+			currentImageIndex = 0
+			showImage(currentImageIndex = currentImageIndex)
+		} else {
+			Toast.makeText(this, "모든 그룹 종료", Toast.LENGTH_SHORT).show()
+		}
 	}
 
 	private fun createProgressView(): View {
 		val progressBar =
-				ProgressBar(this@ImageTestActivity, null, android.R.attr.progressBarStyleHorizontal)
+				ProgressBar(this@   ImageTestActivity, null, android.R.attr.progressBarStyleHorizontal)
 		val layoutParams = LinearLayout.LayoutParams(
 				ViewGroup.LayoutParams.WRAP_CONTENT,
 				ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -88,13 +112,15 @@ class ImageTestActivity : AppCompatActivity() {
 		).toInt()
 	}
 
-	private fun startProgress(progressBar: ProgressBar) {
-		GlobalScope.launch() {
+	private suspend fun startProgress(progressBar: ProgressBar) {
+		val value = GlobalScope.async {
 			repeat(300) {
 				delay(10L)
 				progressBar.progress = progressBar.progress + 1
 			}
 		}
+		value.await()
+		checkNextStep()
 	}
 
 	companion object {
