@@ -92,7 +92,7 @@ class ImageTestActivity : AppCompatActivity() {
 
 	private fun createProgressView(): View {
 		val progressBar =
-				ProgressBar(this@   ImageTestActivity, null, android.R.attr.progressBarStyleHorizontal)
+				ProgressBar(this@ImageTestActivity, null, android.R.attr.progressBarStyleHorizontal)
 		val layoutParams = LinearLayout.LayoutParams(
 				ViewGroup.LayoutParams.WRAP_CONTENT,
 				ViewGroup.LayoutParams.WRAP_CONTENT,
