@@ -1,6 +1,7 @@
 package com.example.meetinplace.ui
 
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.example.meetinplace.R
 import com.example.meetinplace.databinding.ActivityImageTestBinding
 import kotlinx.coroutines.*
+
 
 class ImageTestActivity : AppCompatActivity() {
 
@@ -42,6 +44,16 @@ class ImageTestActivity : AppCompatActivity() {
 		setImageSwitcher()
 		setProgressView()
 		showImage(currentImageIndex = currentImageIndex)
+	}
+
+	init {
+		val display = this.display
+		val displayMetrics = DisplayMetrics()
+		display!!.getRealMetrics(displayMetrics)
+
+		val density = resources.displayMetrics.density
+		val dpHeight = displayMetrics.heightPixels / density
+		val dpWidth = displayMetrics.widthPixels / density
 	}
 
 	private fun setImageSwitcher() {
