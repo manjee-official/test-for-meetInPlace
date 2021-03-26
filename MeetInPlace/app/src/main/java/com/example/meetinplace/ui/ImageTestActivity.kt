@@ -1,9 +1,13 @@
 package com.example.meetinplace.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.util.TypedValue
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -17,6 +21,7 @@ import com.example.meetinplace.databinding.ActivityImageTestBinding
 import kotlinx.coroutines.*
 
 
+@SuppressLint("ClickableViewAccessibility")
 class ImageTestActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityImageTestBinding
@@ -35,6 +40,9 @@ class ImageTestActivity : AppCompatActivity() {
 	private var currentGroupIndex = 0
 	private var currentImageIndex = 0
 
+	private var dpHeight: Float
+	private var dpWidth: Float
+
 	private lateinit var currentCorutionJob: Deferred<Unit>
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,8 +60,8 @@ class ImageTestActivity : AppCompatActivity() {
 		display!!.getRealMetrics(displayMetrics)
 
 		val density = resources.displayMetrics.density
-		val dpHeight = displayMetrics.heightPixels / density
-		val dpWidth = displayMetrics.widthPixels / density
+		dpHeight = displayMetrics.heightPixels / density
+		dpWidth = displayMetrics.widthPixels / density
 	}
 
 	private fun setImageSwitcher() {
