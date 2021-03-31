@@ -7,7 +7,6 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -40,8 +39,8 @@ class ImageTestActivity : AppCompatActivity() {
 	private var currentGroupIndex = 0
 	private var currentImageIndex = 0
 
-	private var dpHeight: Float
-	private var dpWidth: Float
+	private var dpHeight: Float = 0.0f
+	private var dpWidth: Float = 0.0f
 
 	private lateinit var currentCorutionJob: Deferred<Unit>
 
@@ -51,10 +50,7 @@ class ImageTestActivity : AppCompatActivity() {
 
 		setImageSwitcher()
 		setProgressView()
-		showImage(currentImageIndex = currentImageIndex)
-	}
 
-	init {
 		val display = this.display
 		val displayMetrics = DisplayMetrics()
 		display!!.getRealMetrics(displayMetrics)
@@ -62,6 +58,12 @@ class ImageTestActivity : AppCompatActivity() {
 		val density = resources.displayMetrics.density
 		dpHeight = displayMetrics.heightPixels / density
 		dpWidth = displayMetrics.widthPixels / density
+
+		showImage(currentImageIndex = currentImageIndex)
+	}
+
+	init {
+
 	}
 
 	private fun setImageSwitcher() {
@@ -70,6 +72,14 @@ class ImageTestActivity : AppCompatActivity() {
 			val imageView = ImageView(this)
 			imageView.scaleType = ImageView.ScaleType.FIT_CENTER
 			imageView
+		}
+		binding.viewImage.setOnTouchListener { _: View, event: MotionEvent ->
+			when (event) {
+				else -> {
+					Log.d(TAG, "onTouch imageSwitcher")
+				}
+			}
+			true
 		}
 	}
 
@@ -145,6 +155,6 @@ class ImageTestActivity : AppCompatActivity() {
 	}
 
 	companion object {
-
+		const val TAG: String = "ImageTestActivity"
 	}
 }
