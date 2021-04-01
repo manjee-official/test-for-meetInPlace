@@ -10,7 +10,9 @@ import com.example.meetinplace.data.repository.MapRepositoryImpl
 import com.example.meetinplace.databinding.ActivityNaverMapBinding
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NaverMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityNaverMapBinding

@@ -17,10 +17,12 @@ import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.meetinplace.R
 import com.example.meetinplace.databinding.ActivityImageTestBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 
 
 @SuppressLint("ClickableViewAccessibility")
+@AndroidEntryPoint
 class ImageTestActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityImageTestBinding

@@ -6,9 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.meetinplace.R
 import com.example.meetinplace.databinding.ActivityDaumMapBinding
+import dagger.hilt.android.AndroidEntryPoint
 import net.daum.mf.map.api.MapView
 
-
+@AndroidEntryPoint
 class KakaoMapActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDaumMapBinding

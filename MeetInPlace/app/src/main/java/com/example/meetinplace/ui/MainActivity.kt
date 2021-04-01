@@ -9,8 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.meetinplace.R
 import com.example.meetinplace.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import java.security.MessageDigest
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
