@@ -75,9 +75,37 @@ dependencies {
     // OkHttp3
     implementation 'com.squareup.okhttp3:okhttp:3.14.7'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
+
+    // 구글 지도 SDK
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    // Dagger hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    // Dagger hilt viewModel extension
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_jetpack_version"
+    implementation "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+
+    // Ktx
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
+    implementation "androidx.core:core-ktx:$ktx_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+    // test
+    implementation "junit:junit:$junit_version"
+    implementation "androidx.arch.core:core-testing:$core_testing_version"
+    implementation "org.mockito:mockito-inline:$mockito_inline_version"
+    implementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version"
+
+    // Instrumentation Test
+    implementation "androidx.test:core:$core_test_Version"
+    implementation "androidx.test.ext:junit:$ext_junit_version"
+    implementation "androidx.test:runner:$runner_version"
+    implementation "androidx.test.espresso:espresso-core:$espresso_version"
+    implementation "androidx.fragment:fragment-testing:$fragment_ktx_version"
 }
