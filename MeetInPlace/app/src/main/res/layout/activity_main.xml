@@ -39,5 +39,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_googleMap" />
 
+        <Button
+            android:id="@+id/btn_kakaoMap"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:text="@string/kakao_map"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_imageTest" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

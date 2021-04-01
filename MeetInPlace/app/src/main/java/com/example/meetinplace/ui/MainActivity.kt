@@ -1,11 +1,15 @@
 package com.example.meetinplace.ui
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.meetinplace.R
 import com.example.meetinplace.databinding.ActivityMainBinding
+import java.security.MessageDigest
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +30,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnImageTest.setOnClickListener {
             startActivity(Intent(this, ImageTestActivity::class.java))
+        }
+
+        binding.btnKakaoMap.setOnClickListener {
+            startActivity(Intent(this, KakaoMapActivity::class.java))
         }
     }
 
