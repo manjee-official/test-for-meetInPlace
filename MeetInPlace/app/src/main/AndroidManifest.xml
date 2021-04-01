@@ -20,7 +20,7 @@
         tools:ignore="AllowBackup">
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="" />
+            android:value="797112efb5065ff71deae47e5d774b27" />
 
         <activity android:name=".ui.MainActivity">
             <intent-filter>

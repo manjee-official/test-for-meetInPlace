@@ -81,11 +81,11 @@ dependencies {
 
     // Dagger hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
-    implementation "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     // Dagger hilt viewModel extension
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_jetpack_version"
-    implementation "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+    kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
 
     // Ktx
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
@@ -96,16 +96,16 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     // test
-    implementation "junit:junit:$junit_version"
-    implementation "androidx.arch.core:core-testing:$core_testing_version"
-    implementation "org.mockito:mockito-inline:$mockito_inline_version"
-    implementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version"
+    testImplementation "junit:junit:$junit_version"
+    testImplementation "androidx.arch.core:core-testing:$core_testing_version"
+    testImplementation "org.mockito:mockito-inline:$mockito_inline_version"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutine_version"
 
     // Instrumentation Test
-    implementation "androidx.test:core:$core_test_Version"
-    implementation "androidx.test.ext:junit:$ext_junit_version"
-    implementation "androidx.test:runner:$runner_version"
-    implementation "androidx.test.espresso:espresso-core:$espresso_version"
-    implementation "androidx.fragment:fragment-testing:$fragment_ktx_version"
+    androidTestImplementation "androidx.test:core:$core_test_Version"
+    androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
+    androidTestImplementation "androidx.test:runner:$runner_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+    androidTestImplementation "androidx.fragment:fragment-testing:$fragment_ktx_version"
 }
