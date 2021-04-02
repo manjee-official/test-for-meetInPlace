@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.meetinplace.databinding.FragmentFindLocationBinding
+import com.example.meetinplace.databinding.FragmentMeetListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FindLocationFragment : Fragment() {
+class MeetListFragment : Fragment() {
 
-    private var _binding: FragmentFindLocationBinding? = null
+    private var _binding: FragmentMeetListBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +19,7 @@ class FindLocationFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentFindLocationBinding.inflate(inflater, container, false)
+        _binding = FragmentMeetListBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/app_nav"
-    app:startDestination="@id/findLocationFragment">
-
+    app:startDestination="@id/meetListFragment">
+    <fragment
+        android:id="@+id/meetListFragment"
+        android:name="com.example.meetinplace.ui.MeetListFragment"
+        android:label="MeetListFragment" >
+        <action
+            android:id="@+id/action_meetListFragment_to_findLocationFragment"
+            app:destination="@id/findLocationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/findLocationFragment"
         android:name="com.example.meetinplace.ui.FindLocationFragment"
