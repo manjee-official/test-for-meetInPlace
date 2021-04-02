@@ -95,6 +95,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
+    // navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
     // test
     testImplementation "junit:junit:$junit_version"
     testImplementation "androidx.arch.core:core-testing:$core_testing_version"
@@ -107,5 +111,5 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
     androidTestImplementation "androidx.test:runner:$runner_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
-    androidTestImplementation "androidx.fragment:fragment-testing:$fragment_ktx_version"
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_ktx_version"
 }
