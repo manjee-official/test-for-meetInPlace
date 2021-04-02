@@ -4,4 +4,6 @@
     <string name="google_map">google map</string>
     <string name="image_test">이미지 테스트 뷰</string>
     <string name="kakao_map">KAKAO MAP</string>
+    <string name="add_location">위치 추가</string>
+    <string name="place_in_meet">플레이스 인 밋</string>
 </resources>

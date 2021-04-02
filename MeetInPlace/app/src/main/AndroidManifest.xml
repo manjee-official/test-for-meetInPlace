@@ -33,6 +33,7 @@
         <activity android:name=".ui.GoogleMapActivity" />
         <activity android:name=".ui.KakaoMapActivity" />
         <activity android:name=".ui.ImageTestActivity" />
+        <activity android:name=".ui.MeetActivity" />
     </application>
 
 </manifest>
