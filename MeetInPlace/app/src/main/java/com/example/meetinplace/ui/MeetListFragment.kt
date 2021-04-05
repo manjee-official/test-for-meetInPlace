@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import com.example.meetinplace.R
 import com.example.meetinplace.databinding.FragmentMeetListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,6 +27,10 @@ class MeetListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.layoutAddLocation.setOnClickListener {
+            it.findNavController().navigate(R.id.action_meetListFragment_to_findLocationFragment)
+        }
     }
 
     override fun onDestroyView() {

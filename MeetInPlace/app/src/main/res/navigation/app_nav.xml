@@ -8,7 +8,8 @@
         android:label="MeetListFragment" >
         <action
             android:id="@+id/action_meetListFragment_to_findLocationFragment"
-            app:destination="@id/findLocationFragment" />
+            app:destination="@id/findLocationFragment"
+            app:enterAnim="@anim/nav_default_enter_anim" />
     </fragment>
     <fragment
         android:id="@+id/findLocationFragment"
