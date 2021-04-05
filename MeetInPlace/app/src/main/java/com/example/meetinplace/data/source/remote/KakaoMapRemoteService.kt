@@ -7,10 +7,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object MapRemoteService {
-
-    private const val naverMapApiUrl =
-        "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/"
+object KakaoMapRemoteService {
+    private const val kakaoMapApiUrl =
+        "https://dapi.kakao.com/v2/local/search/"
     private const val readWriteTimeoutSec = 20L
 
     val mapApiService: MapRemoteDataSource
@@ -27,14 +26,13 @@ object MapRemoteService {
         .addInterceptor { chain ->
             val request = chain.request().newBuilder()
                 .addHeader("Content-Type", "application/json;charset=UTF-8")
-                .addHeader("X-NCP-APIGW-API-KEY-ID", MyApplication.API_ID)
-                .addHeader("X-NCP-APIGW-API-KEY", MyApplication.API_KEY).build()
+                .addHeader("Authorization", MyApplication.KAKAO_API_KEY).build()
             chain.proceed(request)
         }
 
     private val mapRetrofit: Retrofit =
         Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(naverMapApiUrl)
+            .baseUrl(kakaoMapApiUrl)
             .client(mOkHttpClient.build())
             .build()
 }
