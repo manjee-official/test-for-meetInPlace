@@ -1,5 +1,6 @@
 package com.example.meetinplace.data.repository
 
+import com.example.meetinplace.data.model.Document
 import com.example.meetinplace.data.model.GeoCodeData
 import com.example.meetinplace.data.model.KakaoAddressData
 
@@ -12,7 +13,7 @@ interface MapRepository {
 
     fun searchAddressOnRemoteWithKakao(
         keywork: String,
-        success: (KakaoAddressData) -> Unit,
+        success: (Document) -> Unit,
         fail: (Throwable) -> Unit
     )
 }
