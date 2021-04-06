@@ -12,8 +12,8 @@ interface MapRepository {
     )
 
     fun searchAddressOnRemoteWithKakao(
-        keywork: String,
-        success: (Document) -> Unit,
-        fail: (Throwable) -> Unit
+            keyword: String,
+            success: (Document) -> Unit,
+            fail: (Throwable) -> Unit
     )
 }

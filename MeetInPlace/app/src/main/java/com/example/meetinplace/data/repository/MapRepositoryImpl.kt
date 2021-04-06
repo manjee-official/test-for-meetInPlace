@@ -2,7 +2,6 @@ package com.example.meetinplace.data.repository
 
 import com.example.meetinplace.data.model.Document
 import com.example.meetinplace.data.model.GeoCodeData
-import com.example.meetinplace.data.model.KakaoAddressData
 import com.example.meetinplace.data.source.remote.KakaoMapRemoteService
 import com.example.meetinplace.data.source.remote.NaverMapRemoteService
 import retrofit2.Call
@@ -33,11 +32,11 @@ class MapRepositoryImpl : MapRepository {
     }
 
     override fun searchAddressOnRemoteWithKakao(
-        keywork: String,
-        success: (Document) -> Unit,
-        fail: (Throwable) -> Unit
+            keyword: String,
+            success: (Document) -> Unit,
+            fail: (Throwable) -> Unit
     ) {
-        KakaoMapRemoteService.mapApiService.searchAddressWithKakao(keywork).enqueue(object : Callback<Document> {
+        KakaoMapRemoteService.mapApiService.searchAddressWithKakao(keyword).enqueue(object : Callback<Document> {
             override fun onFailure(call: Call<Document>, t: Throwable) {
                 fail(t)
             }
