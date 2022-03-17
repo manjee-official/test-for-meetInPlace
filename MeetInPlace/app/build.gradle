@@ -76,7 +76,7 @@ dependencies {
 
     // OkHttp3
     implementation 'com.squareup.okhttp3:okhttp:3.14.7'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.7'
 
     // 구글 지도 SDK
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
