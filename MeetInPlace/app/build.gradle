@@ -101,6 +101,9 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
+    // video compress
+    implementation 'com.github.AbedElazizShe:LightCompressor:0.9.9'
+
     // test
     testImplementation "junit:junit:$junit_version"
     testImplementation "androidx.arch.core:core-testing:$core_testing_version"
